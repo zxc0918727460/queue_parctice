@@ -47,3 +47,18 @@ function generateOperationSuccessResponse(){
     ];
     return response()->json($result);
 }
+
+function createResponseContent($info, $message = '', $extra_content = [])
+{
+    $response = json_decode('{"result": {"info": 0, "msg": ""}}');
+    $response->result->info = $info;
+    $response->result->msg = $message;
+
+    if (!empty($extra_content)) {
+        foreach ($extra_content as $key => $value) {
+            $response->result->$key = $value;
+        }
+    }
+
+    return $response;
+}
