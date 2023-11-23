@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/exchange', [App\Http\Controllers\ExchangeRate::class, 'exchange']);
+Route::post('/queue/getTicket', [App\Http\Controllers\Queue::class, 'getTicket']);
+Route::post('/queue/getTicketWithOutQueue', [App\Http\Controllers\TicketController::class, 'getTicket']);
 
 Auth::routes();
 
